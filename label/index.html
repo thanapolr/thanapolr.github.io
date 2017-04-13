@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<!-- <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css"> -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	 crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+
+	<!--<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">-->
+
+	<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css" />
+	<link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
+
+	<!-- JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="app.js?v=@BUILD_DATE@"></script>
+	<script type="text/javascript" src="controller.js?v=@BUILD_DATE@"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+	<div id="content" style="opacity: 1;">
+		<h1>{{title}}</h1>
+		<div class="row">
+
+			<div class="col-sm-12">
+				<div class="well well-light">
+					<div ng-repeat="(key, value) in data">
+						<h1>{{value.name}} <small>{{value.pack.length}} Plans</small></h1>
+						<!-- <h3>{{value.description}}</h3> -->
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="pack in value.pack">
+								<div class="panel panel-success pricing-big">
+									<img src="img/ribbon.png" class="ribbon" ng-if="pack.flag==1">
+									<div class="panel-heading">
+										<div class="font-xl panel-title">{{pack.name}}</div>
+									</div>
+									<div class="panel-body no-padding text-align-center">
+										<div class="the-price">
+											<h1>
+												{{pack.price}} THB<span class="subscript">/ {{pack.duration}} day</span>
+											</h1>
+										</div>
+										<div class="price-features">
+											<ul class="list-unstyled text-left">
+												<li ng-repeat="cond in pack.conditions" class="fa fa-check text-success font-md">
+													<span>{{cond}}</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="panel-footer text-align-center">
+										<a ng-href="tel:{{pack.ussd}}" class="btn btn-primary btn-block" role="button">
+											<i class="fa fa-phone"></i> {{pack.ussd}}
+										</a>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="well well-light" ng-if="false">
+
+					<h1>Professional, <small>4 Plans</small></h1>
+					<div class="row">
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="panel panel-success pricing-big">
+
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Light version</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											<strong>FREE</strong></h1>
+									</div>
+									<div class="price-features">
+										<ul class="list-unstyled text-left">
+											<li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
+											<li><i class="fa fa-check text-success"></i> Limited <strong> download quota</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
+											<li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
+											<li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
+											<li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
+										</ul>
+									</div>
+								</div>
+								<div class="panel-footer text-align-center">
+									<a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>
+									<div>
+										Or <a href="javascript:void(0);">Sign up</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="panel panel-teal pricing-big">
+
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Personal Project</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$99<span class="subscript">/ mo</span></h1>
+									</div>
+									<div class="price-features">
+										<ul class="list-unstyled text-left">
+											<li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
+											<li><i class="fa fa-check text-success"></i> Superbig <strong> download quota</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
+											<li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> access to all files</li>
+											<li><i class="fa fa-check text-success"></i> <strong>Allowed</strong> to be exclusing per sale</li>
+										</ul>
+									</div>
+								</div>
+								<div class="panel-footer text-align-center">
+									<a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Purchase <span>via Paypal</span></a>
+									<div>
+										<a href="javascript:void(0);"><i>We accept all major credit cards</i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="panel panel-primary pricing-big">
+								<img src="img/ribbon.png" class="ribbon">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Developer Bundle</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$350<span class="subscript">/ mo</span></h1>
+									</div>
+									<div class="price-features">
+										<ul class="list-unstyled text-left">
+											<li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
+											<li><i class="fa fa-check text-success"></i> Superbig <strong> download quota</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
+											<li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> access to all files</li>
+											<li><i class="fa fa-check text-success"></i> <strong>Allowed</strong> to be exclusing per sale</li>
+										</ul>
+									</div>
+								</div>
+								<div class="panel-footer text-align-center">
+									<a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Purchase <span>via Paypal</span></a>
+									<div>
+										<a href="javascript:void(0);"><i>We accept all major credit cards</i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="panel panel-darken pricing-big">
+
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Premium Package</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$999<span class="subscript">/ mo</span></h1>
+									</div>
+									<div class="price-features">
+										<ul class="list-unstyled text-left">
+											<li><i class="fa fa-check text-success"></i> Lifetime access <strong> to all storage locations</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
+											<li><i class="fa fa-check text-success"></i> Superbig <strong> download quota</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
+											<li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
+											<li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> access to all files</li>
+											<li><i class="fa fa-check text-success"></i> <strong>Allowed</strong> to be exclusing per sale</li>
+										</ul>
+									</div>
+								</div>
+								<div class="panel-footer text-align-center">
+									<a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Purchase <span>via Paypal</span></a>
+									<div>
+										<a href="javascript:void(0);"><i>We accept all major credit cards</i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<hr>
+
+					<h1>Simple, <small>4 Plans</small></h1>
+					<div class="row">
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="panel panel-darken">
+
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Bronze</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$10<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													1 Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													1 Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													100K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													100MB Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer text-align-center">
+									<a href="javascript:void(0);" class="btn btn-success" role="button">Sign Up</a> 1 month FREE trial</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="panel panel-primary">
+								<img src="img/ribbon.png" class="ribbon">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Silver</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$20<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													2 Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													5 Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													100K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													200MB Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer text-align-center">
+									<a href="javascript:void(0);" class="btn btn-success" role="button">Sign Up</a> 1 month FREE trial</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="panel panel-greenLight">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Gold</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$35<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													5 Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													20 Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													300K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													500MB Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer text-align-center">
+									<a href="javascript:void(0);" class="btn btn-success" role="button">Sign Up</a> 1 month FREE trial</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="panel panel-primary">
+								<div class="panel-heading bg-color-blueDark txt-color-white">
+									<h3 class="panel-title">
+										Diamond</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$99<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													Unlimited Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Unlimited Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													3000K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Unlimited Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer text-align-center">
+									<a href="javascript:void(0);" class="btn btn-success" role="button">Sign Up</a> 1 month FREE trial</div>
+							</div>
+						</div>
+
+					</div>
+
+					<hr>
+
+					<h1>Simple, <small>6 Plans</small></h1>
+					<div class="row">
+
+						<div class="col-xs-12 col-sm-4 col-md-2">
+							<div class="panel panel-orange">
+
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Bronze</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$10<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													1 Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													1 Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													100K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													100MB Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer no-padding">
+									<a href="javascript:void(0);" class="btn bg-color-orange txt-color-white btn-block" role="button">Sign Up</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-2">
+							<div class="panel panel-purple">
+								<img src="img/ribbon.png" class="ribbon">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Silver</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$20<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													2 Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													5 Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													100K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													200MB Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer no-padding">
+									<a href="javascript:void(0);" class="btn bg-color-purple txt-color-white btn-block" role="button">Sign Up</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-2">
+							<div class="panel panel-greenLight">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Gold</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$35<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													5 Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													20 Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													300K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													500MB Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer no-padding">
+									<a href="javascript:void(0);" class="btn bg-color-greenLight txt-color-white btn-block" role="button">Sign Up</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-2">
+							<div class="panel panel-blue">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Diamond</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$99<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													Unlimited Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Unlimited Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													3000K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Unlimited Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer no-padding">
+									<a href="javascript:void(0);" class="btn bg-color-blue txt-color-white btn-block" role="button">Sign Up</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-2">
+							<div class="panel panel-redLight">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Gold</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$35<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													5 Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													20 Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													300K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													500MB Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer no-padding">
+									<a href="javascript:void(0);" class="btn bg-color-redLight txt-color-white btn-block" role="button">Sign Up</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-2">
+							<div class="panel panel-pink">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Diamond</h3>
+								</div>
+								<div class="panel-body no-padding text-align-center">
+									<div class="the-price">
+										<h1>
+											$99<span class="subscript">/mo</span></h1>
+										<small>1 month FREE trial</small>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													Unlimited Account
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Unlimited Project
+												</td>
+											</tr>
+											<tr>
+												<td>
+													3000K API Access
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Unlimited Storage
+												</td>
+											</tr>
+											<tr>
+												<td>
+													Custom Cloud Services
+												</td>
+											</tr>
+											<tr class="active">
+												<td>
+													Weekly Reports
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer no-padding">
+									<a href="javascript:void(0);" class="btn bg-color-pink txt-color-white btn-block" role="button">Sign Up</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+
+</body>
+
+</html>

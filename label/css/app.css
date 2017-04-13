@@ -1,0 +1,717 @@
+@CHARSET "UTF-8";
+/**
+ * Angular JS 
+ */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak,
+	.x-ng-cloak {
+	display: none !important;
+}
+
+/**
+ * http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700 
+ */
+@font-face {
+ 	font-family: 'Prompt', sans-serif;
+ 	unicode-range: U+0E00–U+0E7F;
+}
+
+@font-face {
+	font-family: 'Open Sans', 'Helvetica', sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	src: local('Open Sans Light'), local('OpenSans-Light'),
+		url(../fonts/OpenSans-Light.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Open Sans', 'Helvetica', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	src: local('Open Sans'), local('OpenSans'), url(../fonts/OpenSans.woff)
+		format('woff');
+}
+
+@font-face {
+	font-family: 'Open Sans', 'Helvetica', sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	src: local('Open Sans Bold'), local('OpenSans-Bold'),
+		url(../fonts/OpenSans-Bold.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Open Sans', 'Helvetica', sans-serif;
+	font-style: italic;
+	font-weight: 400;
+	src: local('Open Sans Italic'), local('OpenSans-Italic'),
+		url(../fonts/OpenSans-Italic.woff) format('woff');
+}
+
+/* 
+ * Page Loading 
+ */
+#main>.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 199999;
+	background: rgba(255, 255, 255, 0.7);
+}
+
+#main>.overlay.dark {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+#main>.loading-img {
+	z-index: 299999;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+#main>.loading-img h2 {
+	color: #ccc;
+	border-radius: 6px;
+	margin: 0;
+	font: 2em verdana;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+}
+
+#main>.loading-img span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 2em;
+	height: 2em;
+	margin: .2em;
+	background: #007DB6;
+	border-radius: 2em;
+	-webkit-animation: loading 1s infinite alternate;
+	-moz-animation: loading 1s infinite alternate;
+	-o-animation: loading 1s infinite alternate;
+	animation: loading 1s infinite alternate;
+}
+
+#main>.loading-img span:nth-of-type(2) {
+	background: #008FB2;
+	-webkit-animation-delay: 0.2s;
+	-moz-animation-delay: 0.2s;
+	-o-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+
+#main>.loading-img span:nth-of-type(3) {
+	background: #009B9E;
+	-webkit-animation-delay: 0.4s;
+	-moz-animation-delay: 0.4s;
+	-o-animation-delay: 0.4s;
+	animation-delay: 0.4s;
+}
+
+#main>.loading-img span:nth-of-type(4) {
+	background: #00A77D;
+	-webkit-animation-delay: 0.6s;
+	-moz-animation-delay: 0.6s;
+	-o-animation-delay: 0.6s;
+	animation-delay: 0.6s;
+}
+
+#main>.loading-img span:nth-of-type(5) {
+	background: #00B247;
+	-webkit-animation-delay: 0.8s;
+	-moz-animation-delay: 0.8s;
+	-o-animation-delay: 0.8s;
+	animation-delay: 0.8s;
+}
+
+#main>.loading-img span:nth-of-type(6) {
+	background: #5AB027;
+	-webkit-animation-delay: 1.0s;
+	-moz-animation-delay: 1.0s;
+	-o-animation-delay: 1.0s;
+	animation-delay: 1.0s;
+}
+
+#main>.loading-img span:nth-of-type(7) {
+	background: #A0B61E;
+	-webkit-animation-delay: 1.2s;
+	-moz-animation-delay: 1.2s;
+	-o-animation-delay: 1.2s;
+	animation-delay: 1.2s;
+}
+
+@
+-webkit-keyframes loading { 0% {
+	opacity: 0;
+}
+
+100%
+{
+opacity
+
+
+:
+
+ 
+
+1;
+}
+}
+@
+-moz-keyframes loading { 0% {
+	opacity: 0;
+}
+
+100%
+{
+opacity
+
+
+:
+
+ 
+
+1;
+}
+}
+@
+-o-keyframes loading { 0% {
+	opacity: 0;
+}
+
+100%
+{
+opacity
+
+
+:
+
+ 
+
+1;
+}
+}
+@
+keyframes loading { 0% {
+	opacity: 0;
+}
+
+100%
+{
+opacity
+
+
+:
+
+ 
+
+1;
+}
+background
+
+
+:
+
+ 
+
+#A0B61E
+
+
+;
+-webkit-animation-delay
+
+
+:
+
+ 
+
+1
+.2s
+
+
+;
+-moz-animation-delay
+
+
+:
+
+ 
+
+1
+.2s
+
+
+;
+-o-animation-delay
+
+
+:
+
+ 
+
+1
+.2s
+
+
+;
+animation-delay
+
+
+:
+
+ 
+
+1
+.2s
+
+
+;
+}
+
+/** Recommend setting from http://angular-ui.github.io/bootstrap **/
+.nav, .pagination, .carousel, .panel-title a {
+	cursor: pointer;
+}
+/** make input small 
+.form-group input[type="text"],.form-group input[type="password"] {
+	height: 30px !important;
+	padding: 5px 5px !important;
+	line-height: 1.5 !important;
+	border-radius: 3px !important;
+}
+
+.form-group select {
+	height: 30px !important;
+	line-height: 30px !important;
+	padding: 5px 5px !important;
+}
+
+.form-group textarea {
+	padding-left: 5px !important;
+}
+*/
+/** make btn smaller to match input size
+.btn:not (.btn-sm ):not (.btn-lg ):not (.btn-xs ):not (.btn-ribbon ){
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+} **/
+@media screen and (max-width: 767px) {
+	.smart-form {
+		margin-bottom: 15px
+	}
+}
+
+@media print {
+	.no-print, .no-print * {
+		display: none !important;
+	}
+}
+
+body {
+	font-size: 15px!improtant;
+}
+
+/** make datepicker over header */
+.ui-datepicker {
+	z-index: 1051 !important;
+}
+/** logo **/
+#logo {
+	margin-top: 8px;
+}
+
+/** form **/
+.smart-form .danger {
+	color: #a90329;
+}
+
+.smart-form .warning {
+	color: #c79121;
+}
+
+.smart-form .info {
+	color: #57889c;
+}
+
+.smart-form .success {
+	color: #739e73;
+}
+
+.smart-form .primary {
+	color: #3276b1;
+}
+
+.smart-form .default {
+	color: #999;
+}
+
+.smart-form div[role=tooltip] {
+	opacity: .9;
+	background: none;
+	padding: 5px 0;
+}
+
+.smart-form .input-group button {
+	padding: 6px 12px;
+}
+
+.smart-form .btn {
+	padding: 4px;
+	height: 32px;
+}
+
+/* Fixed icon append on from group */
+.smart-form .form-group .input .icon-append {
+	padding-right: 16px;
+}
+
+.smart-form .state-error+ng-messages {
+	display: block;
+	margin-top: 6px;
+	padding: 0 1px;
+	font-style: normal;
+	font-size: 11px;
+	line-height: 15px;
+	color: #D56161;
+}
+
+.smart-form .select2-drop {
+	margin-top: -1px;
+	box-sizing: border-box;
+	border-top: 1px solid #5D98CC;
+	padding-top: 4px;
+}
+
+.smart-form .select2-search {
+	padding-left: 4px;
+	padding-right: 4px;
+	box-sizing: border-box;
+}
+
+.border-green {
+	border: 2px solid #356e35 !important;
+	border-radius: .25em;
+}
+
+.ui-select-container {
+	display: block;
+}
+
+.ui-select-choices {
+	padding: 4px;
+}
+
+.form-inline .col.form-group {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.form-inline .select {
+	padding-right: 0px;
+}
+
+.form-inline label {
+	display: inline-block !important;
+}
+
+.dd-item .drag-icon {
+	position: relative;
+	cursor: pointer;
+	float: left;
+	width: 25px;
+	height: 20px;
+	margin: 7px 10px;
+	text-align: center;
+	display: inline-block;
+	font-family: FontAwesome;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 18px;
+}
+
+/** 
+ * Select2 
+ */
+.select2-search-choice-close {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.select2-hidden-accessible {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+.select2-container .select2-choice {
+	background-clip: padding-box;
+	height: 30px;
+}
+
+.select2-container .select2-allowclear .select2-choice .select2-chosen {
+	margin-right: 58px;
+}
+
+.select2-container .select2-choice abbr {
+	margin-right: 16px;
+	/* make it visible on smart-admin */
+	background: url('../img/select2/select2.png') right top no-repeat;
+	min-height: 12px;
+	min-width: 12px;
+	top: 10px;
+}
+
+.select2-container .select2-choice abbr:hover {
+	background-position: right -11px;
+	cursor: pointer;
+}
+
+.select2-container .select2-chosen img {
+	vertical-align: text-bottom;
+}
+
+.select2-dropdown-open .select2-choice {
+	border-bottom-color: inherit;
+}
+
+/**
+ * Notification and Banner
+ */
+.state-error .select2-choice, .state-error .select2-choices {
+	background: #fff0f0;
+	border-color: #A90329;
+}
+
+.ptstate-success {
+	background: #f0fff0;
+	border-color: #7DC27D;
+}
+
+.ptstate-error {
+	background: #fff0f0;
+	border-color: #A90329;
+}
+
+.state-success .select2-choice, .state-success .select2-choices {
+	background: #f0fff0;
+	border-color: #7DC27D;
+}
+
+/**
+ * Report
+ */
+.chart {
+	width: auto;
+}
+
+.report-panel h1 {
+	text-transform: uppercase;
+	text-align: center;
+	margin: 30px 0;
+}
+
+.report-panel h2 {
+	text-transform: uppercase;
+	text-align: right;
+}
+
+.report-panel span {
+	display: block;
+	margin: 5px 0 5px 5px;
+}
+
+.report-panel table {
+	width: 100%;
+}
+
+.view-table tbody tr:hover td {
+	cursor: pointer;
+}
+
+/**
+ * Code Snippet
+ */
+.highlight {
+	display: none;
+	padding: 9px 14px;
+	margin-bottom: 14px;
+	background-color: #f7f7f9;
+	border: 1px solid #e1e1e8;
+	border-radius: 4px;
+}
+
+.highlight pre {
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: transparent;
+	border: 0;
+	white-space: nowrap;
+}
+
+.highlight pre code {
+	font-size: inherit;
+	color: #333;
+	/* Effectively the base text color */
+}
+
+.highlight pre .lineno {
+	display: inline-block;
+	width: 22px;
+	padding-right: 5px;
+	margin-right: 10px;
+	text-align: right;
+	color: #bebec5;
+}
+
+@media ( min-width : 481px) {
+	.highlight {
+		display: block;
+	}
+}
+
+/**
+ * Table 
+ */
+.table-borderless td, .table-borderless th {
+	border: none;
+}
+
+.table-compact {
+	margin: 0;
+}
+
+td .note {
+	margin-top: 0;
+}
+
+/** Validation error in form inline */
+form.pt-smart-form-inline .smart-form em.invalid {
+	width: 100%;
+	font-size: 11px;
+	color: #D56161;
+	display: block;
+}
+
+form.pt-smart-form-inline .form-group {
+	vertical-align: top;
+	margin: 5px 0px;
+}
+
+/**
+ * For What?
+ */
+.smart-style-2 nav ul li a:hover, .smart-style-2 nav ul ul li>a:hover {
+	background-color: #d6dde7 !important;
+}
+
+.smart-style-2 nav ul .active>a {
+	background-color: #d6dde7 !important;
+}
+
+.smart-style-2 nav ul li.open>a {
+	background: none !important;
+}
+
+/** make disable input grey**/
+.smart-form .grey-disable[disabled], .smart-form .grey-disable[readonly],
+	.grey-disable .form-control[disabled], .grey-disable .form-control[readonly],
+	.grey-disable fieldset[disabled] .form-control {
+	cursor: default;
+	background-color: #f4f4f4;
+	border: 1px solid #ddd;
+	opacity: 1;
+}
+
+.smart-form label .control-label.has-error.error-message, .smart-form label .control-label.has-error.validationMessage
+	{
+	color: #b94a48;
+}
+.note, .smart-form .note{
+	font-size: 13px;
+}
+.note-lg, .smart-form .note-lg {
+    margin-top: 6px;
+    padding: 0 1px;
+    font-size: 15px;
+    line-height: 15px;
+    color: #999;
+}
+
+label.control-label.has-error {
+	color: #b94a48;
+}
+
+.input-border {
+	padding: 5px 10px 5px 10px;
+	border-color: #BDBDBD; 
+	border-style: solid; 
+	border-width: 1px;
+}
+
+.grey-disable-input {
+	cursor: default;
+	background-color: #f4f4f4;
+	border: 1px solid #ddd;
+	opacity: 1;
+}
+
+.grey-disable input[disabled], .grey-disable input[readonly],
+	.grey-disable select[disabled], .grey-disable select[readonly],
+	.grey-disable textarea[disabled], .grey-disable textarea[readonly] {
+	cursor: default;
+	background-color: #f4f4f4;
+	border: 1px solid #ddd;
+	opacity: 1;
+}
+
+.note.text-danger {
+	margin-top: 6px;
+	padding: 0 1px;
+	font-size: 11px;
+	line-height: 15px;
+	color: #b94a48;
+}
+
+.two-line-caption {
+	line-height: 1.5em;
+	height: 4em;
+	font-size: 15px;
+}
+
+.smart-form header {
+	color: #00acc1;
+	font-weight: 500;
+}
+
+.smart-form .label{
+	font-size: 15px;
+}
+
+.smart-form .input input, .smart-form .select select, .smart-form .textarea textarea{
+	font-size: 15px;
+}
+.smart-form .button, .smart-form .checkbox, .smart-form .input, .smart-form .radio, .smart-form .select, .smart-form .textarea, .smart-form .toggle{
+	font-size: 15px;
+}
+
+.smart-style-2 nav ul li a {
+	color: #69737A!important;
+    font-size: 14px!important;
+}
+
+.fc-border-separate thead tr, .table thead tr{
+	font-size: 14px;
+}
+
+.jarviswidget>div{
+	font-size: 15px!important;
+}
+

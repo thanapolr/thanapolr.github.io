@@ -1,59 +1,67 @@
 var app = angular.module('myApp', []);
 
-app.service('myDataService', function () {
-  //--- Initial data ---//
-  var data = {
-    // promotion_data
-    "TMH": {
-      name: "TrueMove H",
-      description: "TrueMove H Internet Package",
-      pack: [
-        {
-          name: "เน็ต 100 MB",
-          price: 9.0,
-          duration: 1,
-          ussd: "*900*1*567890#",
-          conditions: [
-            "โปรเน็ตทรูมูฟ เอช 100 MB",
-            "ใช้ได้ถึง เวลา 23.59น ของวันที่สมัคร"
-          ]
-        },
-        {
-          name: "เน็ต 200 MB",
-          price: 15.0,
-          duration: 1,
-          ussd: "*900*2*567890#",
-          conditions: [
-            "โปรเน็ตทรูมูฟ เอช 200 MB",
-            "ใช้ได้ถึง เวลา 23.59น ของวันที่สมัคร"
-          ]
-        },
-        {
-          name: "เน็ต 1.5 GB",
-          price: 199.0,
-          duration: 30,
-          ussd: "*900*3*567890#",
-          flag: 1,
-          conditions: [
-            "โปรเน็ตทรูมูฟ เอช 1.5 GB",
-            "ใช้ได้ถึง เวลา 23.59น ของวันที่ครบ 30 วัน"
-          ]
-        }
-      ]
-    }
-  };
+app.service('myDataService', function ($http, $q) {
+  
+  var cachedResult = undefined;
 
+  // process the data.json to data-to-display
+  /* data-to-dispay : {
+    name: 'provider name',
+    description : 'provider description',
+    pack : [
+      { name : 'pack name', price: some_price, ... }
+    ]
+  }
+  */
+  var processData = function(input){
+    return input;
+    // var providers = {};
+    // input.providers.forEach(function(element){
+    //   providers[element.name] = element;
+    // });
+
+    // var data = {};
+    // input.pack.forEach(function(element) {
+    //   var p = element.provider;
+
+    //   if(data[p] == undefined){
+    //     // new provider with pack 
+    //     data[p] = {
+    //       name : providers[p].name,
+    //       description : providers[p].description,
+    //       pack : [element]
+    //     }
+    //   }else {
+    //     // append pack to the provider
+    //     data[p].pack.push(element);
+    //   }
+    // });
+
+    // return {
+    //   providers : providers,
+    //   data : data
+    // }
+  };
+  
   //--- Service Functions ---//
   return {
-    // Get data
-    get: function () {
-      return data;
-    },
-    search: function(query){
-      // search on data
-    },
-    reload: function(){
-      // reload data from 'source'
+    loadAsync : function(){
+      if(cachedResult == undefined) {
+        return $http({
+            method : 'GET',
+            url : 'data.json',
+            headers : {
+              'Content-Type' : 'application/json'
+            }
+          }).then(function(response){
+            cachedResult = processData(response.data)
+            return cachedResult;
+          });
+      } else {
+        return $q(function(resolve, reject){
+          resolve(cachedResult);
+        });
+      }
     }
   }
 });

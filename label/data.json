@@ -1,0 +1,16 @@
+{
+"version" : 1.0, 
+"providers" : {
+  "TMH"  : { "name": "TrueMove H" },
+  "Dtac" : { "name": "Dtac" },
+  "AIS"  : { "name": "AIS" }
+},
+
+"pack": [
+{ "name": "เน็ต 100 MB", "price": 9.0, "duration": 1, "ussd": "*900*1*567890#", "provider":"TMH", "conditions": [ "โปรเน็ตทรูมูฟ เอช 100 MB", "ใช้ได้ถึง เวลา 23.59น ของวันที่สมัคร"]},
+{ "name": "เน็ต 100 MB", "price": 15.0, "duration": 1, "ussd": "*900*2*567890#", "provider":"TMH", "conditions": [ "โปรเน็ตทรูมูฟ เอช 200 MB", "ใช้ได้ถึง เวลา 23.59น ของวันที่สมัคร"]},     
+{ "name": "เน็ต 100 MB", "price": 199.0, "duration": 30, "ussd": "*900*3*567890#", "provider":"TMH", "conditions": [ "โปรเน็ตทรูมูฟ เอช 1.5 GB", "ใช้ได้ถึง เวลา 23.59น ของวันที่ครบ 30 วัน"]}     
+
+]
+
+}
